@@ -1,7 +1,10 @@
 pytorch-pretrained-gans @ git+https://github.com/lukemelas/pytorch-pretrained-gans@2982fdab4e683165e45bc2f4a64c2942a7a3a1b7
 torchattacks==3.3.0
-yaml
+pyyaml
 torch
 tqdm
 pandas
 torchvision
+opencv-python
+faiss-gpu==1.7.1
+boto3
