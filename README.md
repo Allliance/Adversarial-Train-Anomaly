@@ -1,2 +1,2 @@
-# Adversarial-Train-Anomaly
-Training a robust anomaly detection model
+# Robust Anomaly Detection
+Implementation of some method for robust anomaly detection
