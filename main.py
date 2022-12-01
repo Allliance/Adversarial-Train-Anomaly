@@ -93,13 +93,6 @@ logger.info(f'Dataset: {dataset} - Normal-Class-Index: {normal_class_indx}')
 #  Merge Datasets #
 ###################
 
-merged_trainloader = None
-
-if config['merged']:
-    normal_dataset, _ = get_datasets(CIFAR10, normal_class_indx, len(config['exposures']))
-    merged_dataset = MergedDataset(normal_dataset, exposure_dataset)
-    merged_trainloader = torch.utils.data.DataLoader(merged_dataset, shuffle=True, batch_size=batch_size)
-    
 print("Length of Exposure Data", len(exposure_dataset))
 
 print("Length of Normal Train Data", len(train_loader.dataset))
