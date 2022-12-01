@@ -1,15 +1,19 @@
-dataset: mnist #options [cifar, mnist, fashion-mnist]
-backbone: 18 #options [18, 34, 50, 101, 152]
-pretrained: True # ignore for now
-normal_class_indx: 0
+auc_every: 5 #Take AUC over test set every #n epochs
+backbone: 18  #options [18, 34, 50, 101, 152]
 batch_size: 32
-auc_every: 1 # Takes too much time
-n_epochs: 30 # Number of all iterations
-work_dir: ./logs/
-attack_type: PGD
-attack_params: { "eps": 0.03, "steps": 10 }
-knn_attack: False # TODO, keep it false
-results_path: ./results/ # saves results as csv row in this folder
-output_file_name: train_results # saves csv file with name {output_file_name}.csv
-use_gan: False # if True, uses Gan images as exposure
-exposure_folder: "./CURRENT-CLASS-EXPOSURE/" # Path to the folder of .png files
+bw: false #Make exposure anomalies black and white
+dataset: cifar10 #options [cifar, mnist, fashion-mnist, svhn]
+exposure_folder: ./cifar10_1_exposures/ #Path to Anomaly images
+exposures: #Kinds of anomalies being used. optinos: [SDE, Reals]
+- Reals
+n_epochs: 31
+normal_class_indx: 1
+output_file_name: train_results
+pretrained: false #Use pretrained model on ImageNET
+results_path: ./results_cifar10_1/
+train_attack:
+  attack_params:
+    eps: 0.03
+    steps: 10
+  attack_type: PGD
+use_gan: false #Use GAN as exposures
