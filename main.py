@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from model import FeatureExtractor
-from utills import knn_score, test_AUC, auc_softmax, auc_softmax_adversarial, get_data
+from utils import knn_score, test_AUC, auc_softmax, auc_softmax_adversarial, get_data
 import yaml
 import numpy as np
 import os
