@@ -5,7 +5,6 @@ import torch.optim as optim
 from model import FeatureExtractor
 from utills import knn_score, test_AUC, auc_softmax, auc_softmax_adversarial, get_data
 import yaml
-from torchvision.datasets import CIFAR10, MNIST
 import numpy as np
 import os
 from pytorch_pretrained_gans import make_gan
@@ -80,7 +79,7 @@ else:
     exposure_dataset = Exposure(root=config['exposure_folder'], extra=extra)
     exposure_loader = torch.utils.data.DataLoader(exposure_dataset, shuffle=True, batch_size=batch_size)
 
-    
+
 #######################
 #  Prepare Datasets   #
 #######################
@@ -132,7 +131,6 @@ except:
 #  Training  #
 ##############
 
-learning_rate = 1e-5
 optimizer = torch.optim.SGD(model.parameters(), lr=0.1, momentum=0.9, weight_decay=5e-4)
 criterion = nn.CrossEntropyLoss()
 
