@@ -2,7 +2,7 @@ auc_every: 5 #Take AUC over test set every #n epochs
 backbone: 18  #options [18, 34, 50, 101, 152]
 batch_size: 32
 bw: false #Make exposure anomalies black and white
-dataset: cifar10 #options [cifar, mnist, fashion-mnist, svhn]
+dataset: cifar10 #options [cifar10, cifar100, mnist, fashion-mnist, svhn]
 exposure_folder: ./cifar10_1_exposures/ #Path to Anomaly images
 exposures: #Kinds of anomalies being used. optinos: [SDE, Reals]
 - Reals
