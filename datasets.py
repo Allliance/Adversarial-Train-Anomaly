@@ -22,8 +22,8 @@ inv_normalize = transforms.Normalize(
 
 
 class Exposure(Dataset):
-    def __init__(self, root, extra):
-        self.image_files = glob(os.path.join(root, "*.png")) + glob(os.path.join(root, "*.jpeg")) + extra
+    def __init__(self, root):
+        self.image_files = glob(os.path.join(root, "*.png")) + glob(os.path.join(root, "*.jpeg"))
 
     def __getitem__(self, index):
         image_file = self.image_files[index]
