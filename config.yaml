@@ -1,7 +1,7 @@
 auc_every: 5 #Take AUC over test set every #n epochs
 backbone: 18  #options [18, 34, 50, 101, 152]
 batch_size: 32
-bw: false #Make exposure anomalies black and white
+bw: False #Make exposure anomalies black and white
 dataset: cifar10 #options [cifar10, cifar100, mnist, fashion-mnist, svhn]
 exposure_folder: ./cifar10_1_exposures/ #Path to Anomaly images
 exposures: #Kinds of anomalies being used. optinos: [SDE, Reals]
@@ -9,11 +9,12 @@ exposures: #Kinds of anomalies being used. optinos: [SDE, Reals]
 n_epochs: 31
 normal_class_indx: 1
 output_file_name: train_results
-pretrained: false #Use pretrained model on ImageNET
+pretrained: False #Use pretrained model on ImageNET
 results_path: ./results_cifar10_1/
 train_attack:
   attack_params:
     eps: 0.03
     steps: 10
   attack_type: PGD
-use_gan: false #Use GAN as exposures
+use_gan: False #Use GAN as exposures
+knn_attack: False
