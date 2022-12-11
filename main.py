@@ -73,10 +73,7 @@ G, exposure_dataset, exposure_loader = None, None, None
 if config['use_gan']:
     G = make_gan(gan_type='biggan', model_name='biggan-deep-128').to(device)
 else:
-    extra = []
-    if "TI" in config['exposures']:
-        extra = config['selected_images']
-    exposure_dataset = Exposure(root=config['exposure_folder'], extra=extra)
+    exposure_dataset = Exposure(root=config['exposure_folder'])
     exposure_loader = torch.utils.data.DataLoader(exposure_dataset, shuffle=True, batch_size=batch_size)
 
 
