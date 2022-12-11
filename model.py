@@ -47,4 +47,3 @@ class FeatureExtractor(nn.Module):
 
 
 net = FeatureExtractor()
-print(net)
