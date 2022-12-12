@@ -56,7 +56,7 @@ def get_dataloader(dataset='cifar10', normal_class_indx = 0, batch_size=8):
         return get_CIFAR100(normal_class_indx, batch_size)
     elif dataset == 'mnist':
         return get_MNIST(normal_class_indx, batch_size)
-    elif dataset == 'fashion-mnist':
+    elif dataset == 'fmnist':
         return get_FASHION_MNIST(normal_class_indx, batch_size)
     elif dataset == 'svhn':
         return get_SVHN(normal_class_indx, batch_size)
