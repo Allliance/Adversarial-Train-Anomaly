@@ -249,24 +249,22 @@ def earlystop(model, data, target, perturb_steps, tau, epsilon=8/255, step_size=
     return output_adv, output_target
 
 
-def get_data(use_gan, model, exposure_iter, G, data, target, attack, device, bw, clean=False):
+def get_data(model, exposure_iter, G, data, target, attack, device, config):
     model.eval()
 
     fake_data = None
 
-    if use_gan:
+    if config['use_gan']:
         y = G.sample_class(batch_size=data.shape[0])
         z = G.sample_latent(batch_size=data.shape[0])  
         x = G(z=z.to(device), y=y.to(device)).to(device)
         x = transforms.Resize((32, 32))(x)
         fake_data = (x - torch.min(x))/(torch.max(x)- torch.min(x))
     else:
-        fake_data = next(exposure_iter).to(device)
+        fake_data, fake_target = next(exposure_iter).to(device)
     
-    fake_target = torch.ones((fake_data.shape[0]), device=device)
 
-
-    if bw:
+    if config['bw']:
         fake_data = transforms.Grayscale(3)(fake_data)
 
     new_data = torch.cat((fake_data, data))
