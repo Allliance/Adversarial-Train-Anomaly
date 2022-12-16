@@ -261,8 +261,9 @@ def get_data(model, exposure_iter, G, data, target, attack, device, config):
         x = transforms.Resize((32, 32))(x)
         fake_data = (x - torch.min(x))/(torch.max(x)- torch.min(x))
     else:
-        fake_data, fake_target = next(exposure_iter).to(device)
-    
+        fake_data, fake_target = next(exposure_iter)
+        fake_data, fake_target = fake_data.to(device), fake_target.to(device)
+        print(fake_target)
 
     if config['bw']:
         fake_data = transforms.Grayscale(3)(fake_data)
@@ -270,7 +271,7 @@ def get_data(model, exposure_iter, G, data, target, attack, device, config):
     new_data = torch.cat((fake_data, data))
     new_target = torch.cat((fake_target, target))
     
-    if not clean:
+    if not config['clean']:
         adv_data = attack(new_data, new_target)
         final_data = torch.cat((new_data, adv_data))
         final_target = torch.cat((new_target, new_target))
