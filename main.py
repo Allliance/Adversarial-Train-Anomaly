@@ -1,4 +1,3 @@
-%%writefile main.py
 from torchvision import models
 import torch
 import torch.nn as nn
