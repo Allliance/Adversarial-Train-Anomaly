@@ -30,8 +30,8 @@ class Exposure(Dataset):
         image = Image.open(image_file)
         image = image.convert('RGB')
         image = transform(image)
-
-        return image
+        label = 1 if os.path.basename(image_file)[0] = 'n' else 2
+        return image, label
 
     def __len__(self):
         return len(self.image_files)
