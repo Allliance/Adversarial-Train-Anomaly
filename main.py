@@ -198,10 +198,10 @@ for epoch in range(NUMBER_OF_EPOCHS):
        data, target = data.to(device), target.to(device)
        
        try:
-           data, target = get_data(config['use_gan'], model, exposure_iter, G, data, target, attack, device, config['bw'], config['clean'])
+           data, target = get_data(model, exposure_iter, G, data, target, attack, device, config)
        except StopIteration:
            exposure_iter = iter(exposure_loader)
-           data, target = get_data(config['use_gan'], model, exposure_iter, G, data, target, attack, device, config['bw'], config['clean'])
+           data, target = get_data(model, exposure_iter, G, data, target, attack, device, config)
        target = target.type(torch.LongTensor).cuda()
        if i == 0:
           first_batch = data.detach().clone()
