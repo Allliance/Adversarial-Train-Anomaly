@@ -263,7 +263,6 @@ def get_data(model, exposure_iter, G, data, target, attack, device, config):
     else:
         fake_data, fake_target = next(exposure_iter)
         fake_data, fake_target = fake_data.to(device), fake_target.to(device)
-        print(fake_target)
 
     if config['bw']:
         fake_data = transforms.Grayscale(3)(fake_data)
