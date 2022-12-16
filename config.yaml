@@ -7,6 +7,7 @@ exposure_folder: ./cifar10_1_exposures/ #Path to Anomaly images
 exposures: #Kinds of anomalies being used. optinos: [SDE, Reals]
 - Reals
 n_epochs: 31
+triple_label: True
 normal_class_indx: 1
 output_file_name: train_results
 pretrained: False #Use pretrained model on ImageNET
