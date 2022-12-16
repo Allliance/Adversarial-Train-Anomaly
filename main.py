@@ -1,3 +1,4 @@
+%%writefile main.py
 from torchvision import models
 import torch
 import torch.nn as nn
@@ -57,7 +58,7 @@ logger.info(f'Device : {device}')
 #  Load Model   #
 #################
 
-model = FeatureExtractor(model=config['backbone'], pretrained=config['pretrained'])
+model = FeatureExtractor(model=config['backbone'], pretrained=config['pretrained'], num_classes=3 if config['triple_label'] else 2)
 model.to(device)
 model.eval()
 attack_params['model'] = model
@@ -203,6 +204,7 @@ for epoch in range(NUMBER_OF_EPOCHS):
            exposure_iter = iter(exposure_loader)
            data, target = get_data(model, exposure_iter, G, data, target, attack, device, config)
        target = target.type(torch.LongTensor).cuda()
+       
        if i == 0:
           first_batch = data.detach().clone()
        optimizer.zero_grad()
