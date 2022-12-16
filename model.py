@@ -12,7 +12,7 @@ std = torch.tensor(cifar10_std).view(3,1,1).cuda()
 
 
 class FeatureExtractor(nn.Module):
-  def __init__(self, model=18, pretrained=True):
+  def __init__(self, model=18, pretrained=True, num_classes=2):
     super(FeatureExtractor, self).__init__()
 
     # Load a pretrained resnet model from torchvision.models in Pytorch
@@ -32,7 +32,7 @@ class FeatureExtractor(nn.Module):
 
     num_ftrs = self.model.linear.in_features
     self.model.linear = nn.Flatten()
-    self.head = nn.Linear(num_ftrs, 2)
+    self.head = nn.Linear(num_ftrs, num_classes)
 
   def forward(self, x):
     x = self.norm(x)
